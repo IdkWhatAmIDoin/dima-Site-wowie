@@ -428,3 +428,27 @@ h1 {
     font-size: 0.875rem;
     margin: 0 !important;
 }
+
+/* ── AI quip footer ── */
+.rblx-ai-quip {
+    margin-top: 0.75rem !important;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem !important;
+    color: var(--text-faint) !important;
+    font-style: italic;
+    line-height: 1.4;
+    min-height: 1.2em;
+}
+.rblx-quip-cursor {
+    display: inline-block;
+    animation: blink 0.9s step-end infinite;
+    color: var(--accent);
+    font-style: normal;
+    margin-left: 1px;
+    font-size: 0.7rem;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}

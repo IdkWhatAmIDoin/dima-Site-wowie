@@ -113,68 +113,39 @@
     const quipEl = document.getElementById('rblx-quip');
     if (!quipEl) return;
 
-    const textEl  = quipEl.querySelector('.rblx-quip-text');
-    const cursor  = quipEl.querySelector('.rblx-quip-cursor');
+    const textEl = quipEl.querySelector('.rblx-quip-text');
+    const cursor = quipEl.querySelector('.rblx-quip-cursor');
 
-    const knownNote = KNOWN_USERS[d.username.toLowerCase()] || '';
-    const groupSample = d.groups
-      ? d.groups.slice(0, 8).map(g => g.groupName).join(', ')
-      : 'none';
     const accountAge = d.created
       ? `${Math.floor((Date.now() - new Date(d.created)) / (1000*60*60*24*365))} years old`
       : 'unknown age';
 
-    const prompt = `You are writing a tiny one-sentence observation about a Roblox user for a personal website footer. Be witty, warm, and concise — max 18 words. No quotes, no hashtags, no emoji, no "This user".
-${knownNote ? `Context: ${knownNote}.` : ''}
-User data:
-- Username: ${d.username}
-- Display name: ${d.displayName}
-- Account age: ${accountAge}
-- Friends: ${d.friendsCount ?? 'unknown'}
-- Followers: ${d.followersCount ?? 'unknown'}
-- Groups (sample): ${groupSample}
-- Bio: ${d.description || 'none'}
-Write only the observation, nothing else.`;
-
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/footer-thing-i-think', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 80,
-          stream: true,
-          messages: [{ role: 'user', content: prompt }],
+          username:      d.username,
+          displayName:   d.displayName,
+          accountAge,
+          friendsCount:  d.friendsCount,
+          followersCount: d.followersCount,
+          groups:        d.groups,
+          description:   d.description,
         }),
       });
 
       if (!res.ok) { quipEl.style.display = 'none'; return; }
 
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buf = '';
+      const text = await res.text();
+      if (!text) { quipEl.style.display = 'none'; return; }
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buf += decoder.decode(value, { stream: true });
-
-        const lines = buf.split('\n');
-        buf = lines.pop(); // keep incomplete line
-
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          const raw = line.slice(6).trim();
-          if (raw === '[DONE]') break;
-          try {
-            const ev = JSON.parse(raw);
-            if (ev.type === 'content_block_delta' && ev.delta?.text) {
-              textEl.textContent += ev.delta.text;
-            }
-          } catch { /* skip malformed */ }
-        }
+      // Type out the response character by character for effect
+      cursor.style.display = 'inline-block';
+      for (const char of text) {
+        textEl.textContent += char;
+        await new Promise(r => setTimeout(r, 18));
       }
-
       cursor.style.display = 'none';
     } catch {
       quipEl.style.display = 'none';
