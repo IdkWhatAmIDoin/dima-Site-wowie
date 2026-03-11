@@ -3,45 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pronouns & gender · Dima</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800&display=swap" rel="stylesheet">
+    <meta name="i18n-title" content="pronouns_title">
+    <title>pronouns &amp; gender · Dima</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <nav class="top-nav">
-            <a href="index.html" class="button">home</a>
-            <a href="projects.html" class="button">projects</a>
-            <a href="https://bsky.app" class="button" target="_blank">bluesky</a>
-            <a href="https://discord.com/users/1133005501391704136" class="button" target="_blank">discord</a>
-            <a href="https://youtube.com" class="button" target="_blank">youtube</a>
+            <!-- lang switcher injected here by i18n.js -->
+            <a href="index.html" class="button" data-i18n="nav_home">home</a>
+            <a href="projects.html" class="button" data-i18n="nav_projects">projects</a>
+            <a href="https://bsky.app" class="button" target="_blank" data-i18n="nav_bluesky">bluesky</a>
+            <a href="https://discord.com/users/1133005501391704136" class="button" target="_blank" data-i18n="nav_discord">discord</a>
+            <a href="https://youtube.com" class="button" target="_blank" data-i18n="nav_youtube">youtube</a>
         </nav>
 
-        <h1>pronouns and gender</h1>
-        <p class="subtitle">(important stuff)</p>
+        <h1 data-i18n="pronouns_heading">pronouns and gender</h1>
+        <p class="subtitle" data-i18n="pronouns_subtitle">(important stuff)</p>
 
         <div class="card">
-            <h2>identity</h2>
-            <p><strong>gender:</strong> non‑binary</p>
-            <p><strong>pronouns:</strong> any pronouns - they/them, he/him, she/her, it/its, all welcome. just be respectful.</p>
-            <p><strong>orientation:</strong> aroace – not interested in romance/sex, but down for deep friendships.</p>
+            <h2 data-i18n="pronouns_identity_h2">identity</h2>
+            <p>
+                <strong data-i18n="pronouns_gender_label">gender:</strong>
+                <span data-i18n="pronouns_gender_val"> non‑binary</span>
+            </p>
+            <p>
+                <strong data-i18n="pronouns_pronouns_label">pronouns:</strong>
+                <span data-i18n="pronouns_pronouns_val"> any pronouns - they/them, he/him, she/her, it/its, all welcome. just be respectful.</span>
+            </p>
+            <p>
+                <strong data-i18n="pronouns_orient_label">orientation:</strong>
+                <span data-i18n="pronouns_orient_val"> aroace – not interested in romance/sex, but down for deep friendships.</span>
+            </p>
         </div>
 
         <div class="card">
-            <h2>about me</h2>
-            <p>i'm just a person who likes making things, playing geometry dash, and occasionally yelling at code. if you want to chat, feel free to reach out on discord (link above).</p>
+            <h2 data-i18n="pronouns_about_h2">about me</h2>
+            <p data-i18n="pronouns_about_p">i'm just a person who likes making things, playing geometry dash, and occasionally yelling at code. if you want to chat, feel free to reach out on discord (link above).</p>
         </div>
 
         <div class="announcement">AAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
 
         <div class="bottom-buttons">
-            <a href="index.html" class="button">home</a>
-            <a href="projects.html" class="button">projects</a>
+            <a href="index.html" class="button" data-i18n="pronouns_btn_home">home</a>
+            <a href="projects.html" class="button" data-i18n="pronouns_btn_projects">projects</a>
         </div>
 
-        <div class="footer">
-            © 2026 Dima – IM DIMA BRO IM DIMA IM DIMA!!!!!!!!! I SWEAR!!!
-        </div>
+        <div class="footer" data-i18n="footer_pronouns">© 2026 Dima – IM DIMA BRO IM DIMA IM DIMA!!!!!!!!! I SWEAR!!!</div>
     </div>
+    <script src="bg.js"></script>
+    <script src="i18n.js"></script>
 </body>
 </html>

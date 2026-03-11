@@ -3,54 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="i18n-title" content="projects_title">
     <title>projects · Dima</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <nav class="top-nav">
-            <a href="index.html" class="button">home</a>
-            <a href="pronouns.html" class="button">pronouns & stuff</a>
-            <a href="https://bsky.app" class="button" target="_blank">bluesky</a>
-            <a href="https://discord.com/users/1133005501391704136" class="button" target="_blank">discord</a>
-            <a href="https://youtube.com" class="button" target="_blank">youtube</a>
+            <!-- lang switcher injected here by i18n.js -->
+            <a href="index.html" class="button" data-i18n="nav_home">home</a>
+            <a href="pronouns.html" class="button" data-i18n="nav_pronouns">pronouns &amp; stuff</a>
+            <a href="https://bsky.app" class="button" target="_blank" data-i18n="nav_bluesky">bluesky</a>
+            <a href="https://discord.com/users/1133005501391704136" class="button" target="_blank" data-i18n="nav_discord">discord</a>
+            <a href="https://youtube.com" class="button" target="_blank" data-i18n="nav_youtube">youtube</a>
         </nav>
 
-        <h1>projects i work on</h1>
-        <p class="subtitle">(some are even finished)</p>
+        <h1 data-i18n="projects_heading">projects i work on</h1>
+        <p class="subtitle" data-i18n="projects_subtitle">(some are even finished)</p>
 
         <div class="card">
-            <h2>roblox games</h2>
+            <h2 data-i18n="projects_roblox_h2">roblox games</h2>
             <div class="project-item">
-                <h3>Ruins</h3>
-                <p>basic asym game im working on, <a href="https://discord.gg/kD9Nyu9bFH">discord server</a></p>
+                <h3 data-i18n="proj_ruins_name">Ruins</h3>
+                <p>
+                    <span data-i18n="proj_ruins_desc">basic asym game im working on,</span>
+                    <a href="https://discord.gg/kD9Nyu9bFH" data-i18n="proj_ruins_discord">discord server</a>
+                </p>
             </div>
             <div class="project-item">
-                <h3>Evil Game</h3>
-                <p>another asym game thats upcoming</p>
+                <h3 data-i18n="proj_evil_name">Evil Game</h3>
+                <p data-i18n="proj_evil_desc">another asym game thats upcoming</p>
             </div>
         </div>
 
         <div class="card">
-            <h2>tools & apis</h2>
+            <h2 data-i18n="projects_tools_h2">tools &amp; apis</h2>
             <div class="project-item">
                 <h3><a href="https://rblx-uif-site.pages.dev/">Roblox User Info API</a></h3>
-                <p>combines multiple roblox endpoints into one. get user profiles, groups, avatar, presence, and more.</p>
-                <p><a href="https://github.com/IdkWhatAmIDoin/rbx-group-fetcher">github repo</a> · <a href="https://rblx-uif-site.pages.dev/docs/">docs</a></p>
+                <p data-i18n="proj_rblx_desc">combines multiple roblox endpoints into one. get user profiles, groups, avatar, presence, and more.</p>
+                <p>
+                    <a href="https://github.com/IdkWhatAmIDoin/rbx-group-fetcher" data-i18n="proj_rblx_github">github repo</a>
+                    &nbsp;·&nbsp;
+                    <a href="https://rblx-uif-site.pages.dev/docs/" data-i18n="proj_rblx_docs">docs</a>
+                </p>
             </div>
+        </div>
+
+        
+        <div class="card" id="rblx-demo-card">
+            <h2 data-i18n="rblx_demo_h2">try the api</h2>
+            <div class="rblx-demo-input">
+                <input id="rblx-username" type="text" placeholder="roblox username" data-i18n-placeholder="rblx_demo_placeholder" autocomplete="off" spellcheck="false" />
+                <button id="rblx-fetch-btn" data-i18n="rblx_demo_btn">fetch</button>
+            </div>
+            <div id="rblx-result"></div>
         </div>
 
         <div class="announcement">AAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
 
         <div class="bottom-buttons">
-            <a href="index.html" class="button">home</a>
-            <a href="pronouns.html" class="button">pronouns & more</a>
+            <a href="index.html" class="button" data-i18n="projects_btn_home">home</a>
+            <a href="pronouns.html" class="button" data-i18n="projects_btn_pronouns">pronouns &amp; more</a>
         </div>
 
-        <div class="footer">
-            © 2026 Dima – im dima and im cool!
-        </div>
+        <div class="footer" data-i18n="footer_projects">© 2026 Dima – im dima and im cool!</div>
     </div>
+    <script src="bg.js"></script>
+    <script src="rblx-demo.js" defer></script>
+    <script src="i18n.js"></script>
 </body>
 </html>

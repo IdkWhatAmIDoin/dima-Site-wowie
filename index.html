@@ -4,48 +4,60 @@
     <meta name="google-site-verification" content="ZY1pEpJRueJiqS_KZyvAC3YeUXNqhJgHf5jOL0Z1IJ4" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="i18n-title" content="index_title">
     <title>Dima's personal site</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <nav class="top-nav">
-            <a href="projects.html" class="button">projects</a>
-            <a href="pronouns.html" class="button">pronouns & stuff</a>
-            <a href="https://bsky.app" class="button" target="_blank">bluesky</a>
-            <a href="https://discord.com/users/1133005501391704136" class="button" target="_blank">discord</a>
-            <a href="https://youtube.com" class="button" target="_blank">youtube</a>
+            <!-- lang switcher injected here by i18n.js -->
+            <a href="projects.html" class="button" data-i18n="nav_projects">projects</a>
+            <a href="pronouns.html" class="button" data-i18n="nav_pronouns">pronouns &amp; stuff</a>
+            <a href="https://bsky.app" class="button" target="_blank" data-i18n="nav_bluesky">bluesky</a>
+            <a href="https://discord.com/users/1133005501391704136" class="button" target="_blank" data-i18n="nav_discord">discord</a>
+            <a href="https://youtube.com" class="button" target="_blank" data-i18n="nav_youtube">youtube</a>
         </nav>
 
-        <h1>hey, im dima</h1>
-        <p class="subtitle">(they/any)</p>
+        <h1 data-i18n="index_heading">hey, im dima</h1>
+        <p class="subtitle" data-i18n="index_subtitle">(they/any)</p>
 
         <div class="card">
-            <h2>welcome to my corner</h2>
-            <p>i finally have my own site (even if it's on Cloudflare Pages). i like making weird things, playing geometry dash, and occasionally writing code that works.</p>
-            <p>here you'll find my projects, pronouns, and links to where i hang out. everything is a work in progress – just like me.</p>
+            <h2 data-i18n="index_card1_h2">welcome to my corner</h2>
+            <p data-i18n="index_card1_p1">i finally have my own site (even if it's on Cloudflare Pages). i like making weird things, playing geometry dash, and occasionally writing code that works.</p>
+            <p data-i18n="index_card1_p2">here you'll find my projects, pronouns, and links to where i hang out. everything is a work in progress – just like me.</p>
         </div>
 
         <div class="card">
-            <h2>recent project</h2>
+            <h2 data-i18n="index_card2_h2">recent project</h2>
             <div class="project-item">
-                <h3><a href="https://rblx-uif-site.pages.dev/">Roblox User Info API</a></h3>
-                <p>a single endpoint that combines multiple roblox apis to fetch user profiles, groups, avatar, presence, and more. includes a geometry dash easter egg 🎮</p>
-                <p><a href="https://rblx-uif-site.pages.dev/docs/">documentation</a></p>
+                <h3><a href="https://rblx-uif-site.pages.dev/" data-i18n="index_proj_title">Roblox User Info API</a></h3>
+                <p data-i18n="index_proj_desc">a single endpoint that combines multiple roblox apis to fetch user profiles, groups, avatar, presence, and more. includes a geometry dash easter egg 🎮</p>
+                <p><a href="https://rblx-uif-site.pages.dev/docs/" data-i18n="index_proj_docs">documentation</a></p>
             </div>
+        </div>
+
+        
+        <div class="card" id="rblx-demo-card">
+            <h2 data-i18n="rblx_demo_h2">try the api</h2>
+            <div class="rblx-demo-input">
+                <input id="rblx-username" type="text" placeholder="roblox username" data-i18n-placeholder="rblx_demo_placeholder" autocomplete="off" spellcheck="false" />
+                <button id="rblx-fetch-btn" data-i18n="rblx_demo_btn">fetch</button>
+            </div>
+            <div id="rblx-result"></div>
         </div>
 
         <div class="announcement">AAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
 
         <div class="bottom-buttons">
-            <a href="projects.html" class="button">all projects</a>
-            <a href="pronouns.html" class="button">pronouns & more</a>
+            <a href="projects.html" class="button" data-i18n="index_btn_projects">all projects</a>
+            <a href="pronouns.html" class="button" data-i18n="index_btn_pronouns">pronouns &amp; more</a>
         </div>
 
-        <div class="footer">
-            © 2026 Dima
-        </div>
+        <div class="footer" data-i18n="footer_index">© 2026 Dima</div>
     </div>
+    <script src="bg.js"></script>
+    <script src="rblx-demo.js" defer></script>
+    <script src="i18n.js"></script>
 </body>
 </html>
