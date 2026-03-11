@@ -45,8 +45,6 @@ Write only the observation, nothing else.`;
         }),
       }
     );
-    if (!env.gemini_api_key) return new Response('no key', { status: 500, headers: corsHeaders });
-      return new Response(env.gemini_api_key.slice(0, 6), { status: 200, headers: corsHeaders });
     if (!geminiRes.ok) {
       return new Response('', { status: 502, headers: corsHeaders });
     }
