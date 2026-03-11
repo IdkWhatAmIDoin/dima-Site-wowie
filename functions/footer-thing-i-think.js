@@ -35,8 +35,8 @@ User data:
 Write only the observation, nothing else.`;
 
     const geminiRes = await fetch(
-      // apparently 2.0 flash isnt on the free tier so were going with 1.5
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${env.gemini_api_key}`,
+      // apparently 2.0 flash isnt on the free tier so were going with 2.5
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-latest:generateContent?key=${env.gemini_api_key}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
