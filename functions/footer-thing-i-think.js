@@ -46,7 +46,8 @@ Write only the observation, nothing else.`;
       }
     );
     if (!geminiRes.ok) {
-      return new Response('', { status: 502, headers: corsHeaders });
+      const errText = await geminiRes.text();
+      return new Response(errText, { status: 502, headers: corsHeaders });
     }
 
     const geminiData = await geminiRes.json();
