@@ -35,7 +35,8 @@ User data:
 Write only the observation, nothing else.`;
 
     const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${env.gemini_api_key}`,
+      // apparently 2.0 flash isnt on the free tier so were going with 2.5
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-latest:generateContent?key=${env.gemini_api_key}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -45,9 +46,9 @@ Write only the observation, nothing else.`;
         }),
       }
     );
-
     if (!geminiRes.ok) {
-      return new Response('', { status: 502, headers: corsHeaders });
+      const errText = await geminiRes.text();
+      return new Response(errText, { status: 502, headers: corsHeaders });
     }
 
     const geminiData = await geminiRes.json();
