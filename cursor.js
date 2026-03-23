@@ -92,7 +92,8 @@
     root.style.setProperty('--time-period', `"${theme.label}"`);
 
     // Apply filter to body for dramatic shift
-    document.body.style.filter = theme['--filter'];
+    const container = document.querySelector('.container');
+    if (container) container.style.filter = theme['--filter'];
 
     // Show a tiny period badge in the corner
     let badge = document.getElementById('time-badge');
