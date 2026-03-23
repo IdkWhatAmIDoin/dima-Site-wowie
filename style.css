@@ -139,7 +139,7 @@ h1 {
     margin-bottom: 0.4rem;
     letter-spacing: -0.02em;
     line-height: 1.1;
-    background: linear-gradient(135deg, #ffffff, #adfff0, #3db89e, #a78bfa, #ffffff);
+    background: linear-gradient(135deg, #ffffff, var(--accent), var(--accent2), #a78bfa, #ffffff);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
