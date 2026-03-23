@@ -37,6 +37,18 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* ── Scroll Progress Bar ── */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: calc(var(--scroll-pct, 0) * 1%);
+    height: 2px;
+    background: linear-gradient(to right, #3db89e, #a78bfa);
+    z-index: 999;
+    transition: width 0.08s linear;
+}
+
 /* background handled by bg.js canvas */
 
 /* Subtle grain overlay */
@@ -113,6 +125,12 @@ body::after {
 }
 
 /* ── Headings ── */
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 h1 {
     font-family: var(--font-display);
     font-size: clamp(2.2rem, 6vw, 3.4rem);
@@ -121,10 +139,12 @@ h1 {
     margin-bottom: 0.4rem;
     letter-spacing: -0.02em;
     line-height: 1.1;
-    background: linear-gradient(135deg, #ffffff 0%, #adfff0 50%, #3db89e 100%);
+    background: linear-gradient(135deg, #ffffff, #adfff0, #3db89e, #a78bfa, #ffffff);
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientShift 6s ease infinite;
 }
 
 .subtitle {
@@ -188,13 +208,14 @@ h1 {
     margin-bottom: 0.75rem;
     border: 1px solid var(--border);
     border-left: 3px solid var(--project-bar);
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 }
 .project-item:last-child { margin-bottom: 0; }
 .project-item:hover {
     background: rgba(8, 14, 28, 0.9);
     border-color: var(--border-hi);
     border-left-color: var(--accent);
+    box-shadow: 0 0 20px rgba(62, 184, 158, 0.08), -2px 0 12px rgba(62, 184, 158, 0.15);
 }
 
 .project-item h3 {
@@ -212,6 +233,11 @@ h1 {
 }
 
 /* ── Announcement ── */
+@keyframes aaaaaPulse {
+    0%, 100% { opacity: 0.5; }
+    50%       { opacity: 0.1; }
+}
+
 .announcement {
     text-align: center;
     font-family: var(--font-display);
@@ -219,10 +245,10 @@ h1 {
     font-weight: 700;
     letter-spacing: 0.25em;
     color: var(--text-faint);
-    opacity: 0.5;
     margin: 1.5rem 0;
     word-break: break-all;
     text-transform: uppercase;
+    animation: fadeUp 0.5s ease both, aaaaaPulse 3s ease-in-out infinite;
 }
 
 /* ── Bottom buttons ── */

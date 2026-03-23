@@ -1,4 +1,4 @@
-// bg.js — interactive background ripples on click
+// bg.js — interactive background ripples on click + scroll progress bar
 
 (function () {
   const canvas = document.createElement('canvas');
@@ -22,6 +22,15 @@
   }
   resize();
   window.addEventListener('resize', resize);
+
+  // ── Scroll progress bar ──────────────────────────────────────
+  function updateScrollProgress() {
+    const max = document.body.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    document.body.style.setProperty('--scroll-pct', pct.toFixed(2));
+  }
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+  updateScrollProgress();
 
   // ── Ripple pool ──────────────────────────────────────────────
   const ripples = [];
